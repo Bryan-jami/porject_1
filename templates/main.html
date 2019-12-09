@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="jumbotron jumbotron-fluid">
+<div class="container">
+  <h1 class="display-4">Books</h1>
+        <form action = "{{url_for('search')}}" method="post">
+        <div class="form-group">
+         <input class="form-control form-control-lg" type="text" placeholder="Enter ISBN, title, or author" name="text">
+        </div>
+        <div class="form-group form-check">
+          <button class="btn btn-primary">Search</button>
+        </div>
+        </form>
+</div>
+</div>
+
+{% endblock %}
