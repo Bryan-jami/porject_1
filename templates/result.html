@@ -1,0 +1,75 @@
+<!Doctype Autor: Bryan Jami	Project_0 descripcion: Pagina principal, y una breve descripcion de la pagina.>
+<html>
+	<head>
+        <title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<style>
+			.row > div {
+                padding: auto;
+                background-color:   #5499C7;
+                border: 2px solid black;
+            }
+			body {
+				background-color:  #EAEDED;
+			}
+            h1 {
+                color:  #154360 ;
+                text-align: center;
+            }
+			h2 {
+				color: purple;
+				text-align: center;
+			}
+			h7 {
+                color:  #FBFCFC ;
+                }
+
+    </style>
+    </head>
+
+	<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="{{url_for('index')}}">Home</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		  </div>
+      <div class='float-right'><h7>{{name}}</h7>   <a href="{{url_for('logout')}}">   Log out</a></div>
+		</nav>
+		<main>
+			<div class='container'>
+			  <div class='col p-5'>
+
+
+          <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">Books</h1>
+                  <form action = "{{url_for('search')}}" method="post">
+                  <div class="form-group">
+                   <input class="form-control form-control-lg" type="text" placeholder="Enter ISBN, title, or author" name="text">
+                  </div>
+                  <div class="form-group form-check">
+                    <button class="btn btn-primary">Search</button>
+                  </div>
+                  </form>
+          </div>
+          </div>
+
+    <h3 class='text-center p-3'>{{ message }}</h3>
+
+    <div class="list-group">
+        {% for x in data %}
+        <a href='/isbn/{{x.isbn}}' class="list-group-item list-group-item-action">
+            <h5 class='text-primary'>{{x.title}}</h5>
+             by {{x.author}} in {{x.year}}
+             <h6 class='float-right'>isbn: {{x.isbn}}</h6></a>
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+</main>
+
+</body>
+</html>
