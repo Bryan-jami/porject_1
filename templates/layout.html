@@ -1,0 +1,50 @@
+<!Doctype Autor: Bryan Jami	Project_0 descripcion: Pagina principal, y una breve descripcion de la pagina.>
+<html>
+	<head>
+        <title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<style>
+			.row > div {
+                padding: auto;
+                background-color:   #5499C7;
+                border: 2px solid black;
+            }
+			body {
+				background-color:  #EAEDED;
+			}
+            h1 {
+                color:  #154360 ;
+                text-align: center;
+            }
+			h2 {
+				color: purple;
+				text-align: center;
+			}
+			h6 {
+                color:  #FBFCFC ;
+                }
+
+    </style>
+    </head>
+
+	<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="{{url_for('index')}}">Home</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		  </div>
+      <div class='float-right'><h6>{{name}}</h6>   <a href="{{url_for('logout')}}">   Log out</a></div>
+		</nav>
+		<main>
+			<div class='container'>
+			  <div class='col p-5'>
+		            {% block body%}
+								{% endblock %}
+			</div>
+		</div>
+		</main>
+
+	</body>
+</html>
